@@ -1,4 +1,4 @@
-## STep 0: Install dependencies
+## Step 0: Install dependencies
 ```bash
 # using npm
 npm install
