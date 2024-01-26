@@ -26,12 +26,12 @@ const Fav: React.FC<{}> = () => {
       style={[
         styles.screen,
         {
-          flex: userData?.favoArt.length === 0 ? 1 : undefined,
           alignItems: userData?.favoArt.length === 0 ? 'center' : undefined,
         },
       ]}>
       {userData?.favoArt.length !== 0 ? (
         <FlatList
+          style={styles.flatlist}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
           data={userData?.favoArt}
@@ -56,6 +56,7 @@ const Fav: React.FC<{}> = () => {
 
 const styles = StyleSheet.create({
   screen: {
+    flex: 1,
     backgroundColor: colors.light,
     paddingHorizontal: 10,
     justifyContent: 'center',
@@ -63,6 +64,7 @@ const styles = StyleSheet.create({
   noFav: {
     textAlign: 'center',
   },
+  flatlist: {},
 });
 
 export default Fav;
