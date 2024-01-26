@@ -9,16 +9,12 @@ export type ArtworkItemRes = {
 };
 
 export type ArtworksRes = {
-  json(): unknown;
   data: ArtworkItemRes[] | undefined;
-  total: number;
-  pageSize: number;
-  page: number;
 };
 
 export default class ArtService {
   static getArtworks = async (): Promise<ArtworksRes> => {
-    const url = `https://api.artic.edu/api/v1/artworks?&limit=40&fields=id,title,artist_display,date_display,image_id,thumbnail,place_of_origin'`;
+    const url = `https://api.artic.edu/api/v1/artworks?&limit=30&fields=id,title,artist_display,date_display,image_id,thumbnail,place_of_origin'`;
 
     try {
       const response = await fetch(url, {

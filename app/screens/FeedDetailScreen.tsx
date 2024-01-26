@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Image, StyleSheet, ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
@@ -8,6 +8,7 @@ import Text from '../components/Text';
 import {ArtworkItemRes} from '../services/artService';
 import {Heart, X} from 'react-native-feather';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import AuthService from '../utils/AuthService';
 
 type FeedDetailScreenProps = {
   route: {params: {item: ArtworkItemRes}};
@@ -17,10 +18,20 @@ const FeedDetailScreen: React.FC<FeedDetailScreenProps> = ({route}) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const artState = useSelector(favoArt);
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const data = await AuthService.getUserData();
+      setUserData(data);
+    };
+
+    fetchUserData();
+  }, []);
 
   const artpiece: ArtworkItemRes = route.params.item;
 
-  const isArtInFavorites: boolean = artState.some(
+  const isArtInFavorites: boolean = userData?.favoArt.some(
     art => art.id === artpiece.id,
   );
 
