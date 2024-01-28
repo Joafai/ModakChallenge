@@ -53,8 +53,8 @@ const FeedDetailScreen: React.FC<FeedDetailScreenProps> = ({route}) => {
         <Text style={styles.infoTitles}>Date</Text>
         <Text style={styles.title}>{artpiece.date_display}</Text>
 
-        <Text style={styles.infoTitles}>Place of Origin</Text>
-        <Text style={styles.title}>{artpiece.place_of_origin}</Text>
+        <Text style={styles.infoTitles}>Technique</Text>
+        <Text style={styles.title}>{artpiece.classification_titles}</Text>
         <View style={styles.favContainer}>
           <Text>
             {!isArtInFavorites ? 'Fav this piece!' : 'Remove from fav!'}

@@ -5,7 +5,7 @@ export type ArtworkItemRes = {
   date_display: string;
   image_id: string;
   thumbnail: string;
-  place_of_origin: string;
+  classification_titles: string[];
 };
 
 export type ArtworksRes = {
@@ -14,7 +14,7 @@ export type ArtworksRes = {
 
 export default class ArtService {
   static getArtworks = async (): Promise<ArtworksRes> => {
-    const url = `https://api.artic.edu/api/v1/artworks?&limit=30&fields=id,title,artist_display,date_display,image_id,thumbnail,place_of_origin'`;
+    const url = `https://api.artic.edu/api/v1/artworks?&limit=30&fields=id,title,artist_display,date_display,image_id,classification_titles`;
 
     try {
       const response = await fetch(url, {
